@@ -9,3 +9,5 @@ def writetemplate(line, cell):
       f.write(cell.format(**globals()))
 
 !python train.py --img 416 --batch 16 --epochs 50 --data '/content/custom_data.yaml' --cfg ./models/custom_yolov5s.yaml --weights '' --name yolov5s_results --cache
+!python val.py --weights /content/yolov5/runs/train/yolov5s_results/weights/best.pt --data '/content/custom_data.yaml' --img 416 --iou 0.65
+!python detect.py --weights /content/yolov5/runs/train/yolov5s_results/weights/best.pt --img 416 --conf 0.4 --source /content/test/images
