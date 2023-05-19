@@ -7,3 +7,5 @@ from IPython.core.magic import register_line_cell_magic
 def writetemplate(line, cell):
     with open(line, 'w') as f:
       f.write(cell.format(**globals()))
+
+!python train.py --img 416 --batch 16 --epochs 50 --data '/content/custom_data.yaml' --cfg ./models/custom_yolov5s.yaml --weights '' --name yolov5s_results --cache
