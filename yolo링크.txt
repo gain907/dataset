@@ -1,3 +1,9 @@
 !curl -L "https://public.roboflow.com/ds/bv8003Z68e?key=J15edF7Ylv" > roboflow.zip; unzip roboflow.zip; rm roboflow.zip
 
 !git clone https://github.com/ultralytics/yolov5
+
+from IPython.core.magic import register_line_cell_magic
+@register_line_cell_magic
+def writetemplate(line, cell):
+    with open(line, 'w') as f:
+      f.write(cell.format(**globals()))
