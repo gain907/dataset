@@ -1,1 +1,2 @@
 https://raw.githubusercontent.com/bab2min/corpus/master/sentiment/naver_shopping.txt
+('[^ㄱ-ㅎㅏ-ㅣ가-힣0-9 ]','')
