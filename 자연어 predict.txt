@@ -22,3 +22,33 @@ def sentiment_predict(new_sentence):
 
 
 sentiment_predict('선물용으로 빨리 받아서 전달했어야 하는데 머그컵만와서 당황 했네요. 이런 일이 없으면 좋겠네요')
+
+
+=================
+1.
+예측문자 = '선물용으로 빨리 받아서 전달했어야 하는데 머그컵만와서 당황 했네요. 이런 일이 없으면 좋겠네요'
+print(예측문자)
+from tensorflow.keras.preprocessing.sequence import pad_sequences
+# train 데이터셋 문자 -> 숫자 변환하기
+predict_seq = tokenizer.texts_to_sequences([예측문자])
+predict_seq = list(predict_seq)
+X = pad_sequences(predict_seq, maxlen = 100) # 100보다 적다 0으로채우고 크면 짤라준다
+==============
+2.
+import re
+def sentiment_predict(new_sentence):
+  new_sentence = re.sub(r'[^ㄱ-ㅎㅏ-ㅣ가-힣 ]','', new_sentence)
+  encoded = tokenizer.texts_to_sequences([new_sentence])
+  pad_new = pad_sequences(encoded, maxlen = 100)
+  print(tokenizer.word_index)
+  print(pad_new)
+====================
+3.
+import re
+def sentiment_predict(new_sentence):
+  new_sentence = re.sub(r'[^ㄱ-ㅎㅏ-ㅣ가-힣 ]','', new_sentence)
+  tokenizer = Tokenizer(char_level=True, oov_token='<OOV>')
+  tokenizer.fit_on_texts(new_sentence)
+  encoded = tokenizer.texts_to_sequences([new_sentence])
+  pad_new = pad_sequences(encoded, maxlen = 100)
+
