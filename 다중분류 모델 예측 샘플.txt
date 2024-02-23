@@ -1,0 +1,49 @@
+# 모델 만들기
+model = Sequential()
+model.add(Dense(12,input_dim=4, activation='relu')) # 입력/히든레이어 input + hidden layer
+model.add(Dense(24, activation='relu')) # 히든레이어 hidden layer
+model.add(Dense(48, activation='relu')) # 히든레이어 hidden layer
+model.add(Dense(96, activation='relu')) # 히든레이어 hidden layer
+model.add(Dense(3, activation='softmax')) # 출력레이어 output layer
+
+
+
+# model.comile
+# loss, optimizer, metrics
+model.compile(loss = 'categorical_crossentropy',
+              optimizer = 'adam',
+              metrics=['accuracy']
+              )
+# 모델 학습
+model.fit(x,y_encoder,epochs=50, batch_size=16)
+
+# 모델 검증(evaluate)
+eva = model.evaluate(x,y_encoder)[1]
+eva1 = np.round(eva*100,2)
+print(eva1)
+eva2 = format(eva*100,'.2f')
+print(eva2)
+
+# 예측
+target_name = ['a','b','c']
+# 입력 데이터 전처리
+input_data = [[5.1,3.3,1.4,0.4]]  # 특징수 입력
+predict = model.predict(np.array(input_data))
+print('결과',predict)
+result = np.argmax(predict)
+print('result')
+target_name[result]
+
+# 결과
+1/1 [==============================] - 0s 17ms/step
+결과 [[9.9987066e-01 1.2936078e-04 1.9171787e-11]]
+result
+a
+
+
+
+
+
+
+
+
