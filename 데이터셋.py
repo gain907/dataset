@@ -66,7 +66,7 @@ while cap.isOpened():
                     ##############################################
 
                     angle_label = np.array([angle], dtype=np.float32)
-                    angle_label = np.append(angle_label, idx)  # idx = come = 0, away = 1, spin = 2
+                    angle_label = np.append(angle_label, idx)  # idx = 종류 = 
                     # joint = [lm.x, lm.y, lm.z, lm.visibility]
                     d = np.concatenate([joint.flatten(), angle_label]) # 100개짜리  행렬이 됨
 
